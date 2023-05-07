@@ -54,11 +54,37 @@ The original colab no longer works by a combination of Google's tendency to forw
 
 If you want to use this on your own computer, you must have an NVIDIA GPU.
 
-First, install pytorch using these instructions: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/).
-On Windows, I **highly** recommend using the Conda installation path. I have been told that if you do not do this, you
-will spend a lot of time chasing dependency problems.
+Gelaos: working install procedure as of May 7th 2023, Windows 10
+Install Python 3.9 (add to path)
+```shell
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
 
-Next, install TorToiSe and it's dependencies:
+pip install numpy
+pip install cffi
+pip install pysoundfile
+
+git clone https://github.com/neonbjb/tortoise-tts.git
+cd tortoise-tts
+```
+in `tortoise-tts/requirements.txt` remove lines
+```
+scipy==0.10.1
+numba==0.48.0
+numpy==1.20.0
+llvmlite
+```
+then run
+```shell
+python -m pip install -r ./requirements.txt
+pip install numba
+python setup.py install
+```
+
+~~First, install pytorch using these instructions: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/).~~
+~~On Windows, I **highly** recommend using the Conda installation path. I have been told that if you do not do this, you
+will spend a lot of time chasing dependency problems.~~
+
+~~Next, install TorToiSe and it's dependencies:~~
 
 ```shell
 git clone https://github.com/neonbjb/tortoise-tts.git
@@ -67,7 +93,7 @@ python -m pip install -r ./requirements.txt
 python setup.py install
 ```
 
-If you are on windows, you will also need to install pysoundfile: `conda install -c conda-forge pysoundfile`
+~~If you are on windows, you will also need to install pysoundfile: `conda install -c conda-forge pysoundfile`~~
 
 ### do_tts.py
 
